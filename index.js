@@ -4,9 +4,9 @@ const wheel = document.getElementById("wheel");
 const prizes = [
   { text: "R$ 50", class: "win" },
   { text: "Nada", class: "nada" },
-  { text: "R$ 0,05", class: "kit" },
+  { text: "R$0,05", class: "kit" },
   { text: "Nada", class: "nada" },
-  { text: "R$ 1,50", class: "kit" },
+  { text: "R$1,50", class: "kit" },
   { text: "Nada", class: "nada" }
 ];
 
