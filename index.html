@@ -19,7 +19,7 @@
     <div class="wheel-container" style="display: none">
       <div id="indicator"></div>
       <div class="wheel" id="wheel"></div>
-      <button id="spinBtn" onclick="spin()">Girar</button>
+      <button id="spinBtn">Girar</button>
     </div>
 
     <div id="win-light"></div>
@@ -32,7 +32,15 @@
         <form id="casinoLoginForm">
           <input type="text" placeholder="Nome completo" required />
           <input type="email" placeholder="E-mail" required />
-          <input type="number" placeholder="CPF" required />
+
+          <!-- CPF com máscara -->
+          <input 
+            type="text" 
+            id="cpf" 
+            placeholder="CPF" 
+            maxlength="14"
+            required 
+          />
 
           <button type="submit">ENTRAR</button>
         </form>
@@ -49,36 +57,5 @@
     </div>
 
     <script src="index.js"></script>
-
-    <script>
-      const openWheelBtn = document.getElementById("openWheelBtn");
-      const wheelContainer = document.querySelector(".wheel-container");
-
-      openWheelBtn.addEventListener("click", () => {
-        openWheelBtn.style.display = "none";
-        wheelContainer.style.display = "flex";
-      });
-
-      document.getElementById("claimPrizeBtn").addEventListener("click", () => {
-        document.getElementById("winPopup").style.display = "none";
-        document.getElementById("prizeModal").style.display = "flex";
-      });
-
-      document.getElementById("casinoLoginForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        document.body.innerHTML = "";
-
-        const msg = document.createElement("h1");
-        msg.textContent = "PARABÉNS,  VOCÊ ACABOU DE CAIR EM UM GOLPE";
-        msg.style.fontSize = "32px";
-        msg.style.color = "white";
-        msg.style.textAlign = "center";
-        msg.style.marginTop = "150px";
-        msg.style.fontFamily = "Arial, sans-serif";
-
-        document.body.appendChild(msg);
-      });
-    </script>
   </body>
 </html>
