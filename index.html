@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>roleta da sorte</title>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <div id="message">
+      PARABÉNS! PARA REIVINDICAR O PRÊMIO CLIQUE NO BOTÃO ABAIXO
+    </div>
+
+    <button id="openWheelBtn">Reivindicar prêmio</button>
+
+    <div class="wheel-container" style="display: none">
+      <div id="indicator"></div>
+      <div class="wheel" id="wheel"></div>
+      <button id="spinBtn" onclick="spin()">Girar</button>
+    </div>
+
+    <div id="win-light"></div>
+
+    <div id="prizeModal" class="casino-login-modal" style="display: none">
+      <div class="casino-login-box">
+        <h2>FAÇA LOGIN PARA RESGATAR</h2>
+        <p class="subtitle">Preencha seus dados e libere o prêmio</p>
+
+        <form id="casinoLoginForm">
+          <input type="text" placeholder="Nome completo" required />
+          <input type="email" placeholder="E-mail" required />
+          <input type="number" placeholder="CPF" required />
+
+          <button type="submit">ENTRAR</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="winPopup" class="win-popup" style="display: none">
+      <div class="win-popup-content">
+        <h2>🎉 VOCÊ GANHOU! 🎉</h2>
+        <p>Parabéns! Você conquistou um prêmio na roleta.</p>
+
+        <button id="claimPrizeBtn">Resgatar Prêmio</button>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+
+    <script>
+      const openWheelBtn = document.getElementById("openWheelBtn");
+      const wheelContainer = document.querySelector(".wheel-container");
+
+      openWheelBtn.addEventListener("click", () => {
+        openWheelBtn.style.display = "none";
+        wheelContainer.style.display = "flex";
+      });
+
+      document.getElementById("claimPrizeBtn").addEventListener("click", () => {
+        document.getElementById("winPopup").style.display = "none";
+        document.getElementById("prizeModal").style.display = "flex";
+      });
+
+      document.getElementById("casinoLoginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        document.body.innerHTML = "";
+
+        const msg = document.createElement("h1");
+        msg.textContent = "PARABÉNS,  VOCÊ ACABOU DE CAIR EM UM GOLPE";
+        msg.style.fontSize = "32px";
+        msg.style.color = "white";
+        msg.style.textAlign = "center";
+        msg.style.marginTop = "150px";
+        msg.style.fontFamily = "Arial, sans-serif";
+
+        document.body.appendChild(msg);
+      });
+    </script>
+  </body>
+</html>

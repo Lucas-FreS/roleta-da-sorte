@@ -1,1 +1,0 @@
-# roleta-da-sorte

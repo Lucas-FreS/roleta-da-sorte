@@ -1,0 +1,330 @@
+/* ======== ESTILO PROFISSIONAL DE CASINO PREMIUM ======== */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 20px;
+  background: radial-gradient(circle at center, #222 0%, #000 100%);
+  color: #fff;
+  font-family: "Trebuchet MS", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Área principal */
+#message {
+  font-size: 22px;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px 25px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
+}
+
+/* Botão inicial */
+#openWheelBtn {
+  padding: 15px 40px;
+  border: none;
+  background: linear-gradient(135deg, #ffdd55, #cba321);
+  font-size: 22px;
+  color: #000;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 12px #f1c40f;
+  transition: 0.25s;
+}
+#openWheelBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #f1c40f;
+}
+
+/* ===== ROUELETA ===== */
+.wheel-container {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding-top: 20px;
+}
+
+/* Indicador */
+#indicator {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 28px solid #ffd700;
+  filter: drop-shadow(0 0 10px #ffd700);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Roleta */
+.wheel {
+  width: 270px;
+  height: 270px;
+  border-radius: 50%;
+  border: 10px solid #d4af37;
+  box-shadow: 0 0 22px #d4af37;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+  transition: transform 5s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+/* Luzes externas */
+.wheel::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 6px dashed #ffd700;
+  box-shadow: 0 0 30px #ffd700;
+}
+
+/* Fatias */
+.slice {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 0 0 6px #000;
+}
+
+.slice.nada {
+  background: linear-gradient(135deg, #ff4d4d, #7a0000);
+}
+
+.slice.kit {
+  background: linear-gradient(135deg, #2ecc71, #0b6623);
+}
+
+.slice.win {
+  background: linear-gradient(135deg, #ffd700, #a67c00);
+}
+
+/* Botão girar */
+#spinBtn {
+  padding: 15px 40px;
+  border: none;
+  background: linear-gradient(135deg, #ffdd55, #cba321);
+  font-size: 22px;
+  color: #000;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 12px #f1c40f;
+  transition: 0.25s;
+}
+
+#spinBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #f1c40f;
+}
+
+/* Efeito de luz */
+#win-light {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 230, 0, 0.5), transparent 70%);
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 999;
+}
+
+#win-light.active {
+  animation: flash 1.2s ease forwards;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  25% { opacity: 0.85; }
+  60% { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+
+/* Ajustes */
+.wheel-container {
+  margin-top: 20px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  #message {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .wheel {
+    width: 220px;
+    height: 220px;
+  }
+
+  #spinBtn {
+    font-size: 18px;
+    padding: 10px 25px;
+  }
+}
+
+/* ===== POPUP DE GANHADOR – ESTILO CASSINO ===== */
+
+.win-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.win-popup-content {
+  background: linear-gradient(145deg, #1a1a1a, #000);
+  border: 2px solid #ffd700;
+  padding: 35px 45px;
+  border-radius: 18px;
+  text-align: center;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.35);
+  animation: popupBounce 0.5s ease forwards;
+}
+
+.win-popup-content h2 {
+  font-size: 28px;
+  color: #ffd700;
+  margin-bottom: 15px;
+  text-shadow: 0 0 12px #b8860b;
+}
+
+.win-popup-content p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+#claimPrizeBtn {
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  border-radius: 10px;
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 15px #ffd700;
+  transition: 0.25s;
+}
+#claimPrizeBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #ffd700;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupBounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ======== POPUP LOGIN ESTILO CASSINO PREMIUM ======== */
+
+.casino-login-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.casino-login-box {
+  width: 90%;
+  max-width: 420px;
+  background: linear-gradient(160deg, #0a0a0a, #1a1a1a);
+  padding: 35px 40px;
+  border-radius: 18px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.35);
+  text-align: center;
+  animation: popupBounce 0.4s ease forwards;
+}
+
+.casino-login-box h2 {
+  color: #ffd700;
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px #b8860b;
+}
+
+.casino-login-box .subtitle {
+  font-size: 15px;
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.casino-login-box input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  background: #111;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: 0.25s;
+}
+.casino-login-box input:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+/* Botão */
+.casino-login-box button {
+  width: 100%;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  color: #000;
+  box-shadow: 0 0 15px #ffd700;
+  transition: 0.25s;
+}
+
+.casino-login-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #ffd700;
+}
